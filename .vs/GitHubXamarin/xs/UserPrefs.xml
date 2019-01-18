@@ -1,0 +1,40 @@
+﻿<Properties StartupConfiguration="{8C712C8C-234F-4B8E-8D5B-325AEBAF77B2}|Default">
+  <MonoDevelop.Ide.ItemProperties.GitHubXamarin.Android PreferredExecutionTarget="Android.Nexus_5X_API_27" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="GitHubXamarin/Constants/GitHubConstants.cs">
+    <Files>
+      <File FileName="GitHubXamarin/App.cs" Line="10" Column="1" />
+      <File FileName="GitHubXamarin/Models/Issue.cs" Line="5" Column="24" />
+      <File FileName="GitHubXamarin/Models/GitHubRepository.cs" Line="4" Column="24" />
+      <File FileName="GitHubXamarin/Models/.#GitHubUser.cs" Line="3" Column="24" />
+      <File FileName="GitHubXamarin/Models/GitHubUser.cs" Line="5" Column="24" />
+      <File FileName="GitHubXamarin/Models/GitHubUserResponse.cs" Line="3" Column="24" />
+      <File FileName="GitHubXamarin/Constants/GitHubConstants.cs" Line="5" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="GitHubXamarin" expanded="True">
+            <Node name="GitHubXamarin" expanded="True">
+              <Node name="Constants" expanded="True">
+                <Node name="GitHubConstants.cs" selected="True" />
+              </Node>
+              <Node name="Models" expanded="True">
+                <Node name="GraphQLModels" expanded="True" />
+              </Node>
+              <Node name="Services" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.GitHubXamarin.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9535D9E9-BA27-4A2C-8F62-E969FE65DCEE" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/bramin/Projects/GitHub/GitHubXamarin/GitHubXamarin/App.cs" relfile="GitHubXamarin/App.cs" line="7" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
