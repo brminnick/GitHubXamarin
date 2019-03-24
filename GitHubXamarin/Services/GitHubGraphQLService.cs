@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using Refit;
 using Polly;
+using System.Collections.Generic;
 
 namespace GitHubXamarin
 {
@@ -35,6 +35,31 @@ namespace GitHubXamarin
             var data = await ExecuteGraphQLRequest(() => GitHubApiClient.RepositoryQuery(new GraphQLRequest(requestString))).ConfigureAwait(false);
 
             return data.Repository;
+        }
+
+        public static async Task<IEnumerable<GitHubRepository>> GetRepositories(string repositoryOwner, int numberOfIssuesPerRequest = 100)
+        {
+            RepositoryConnection repositoryConnection = null;
+
+            do
+            {
+                repositoryConnection = await GetRepositoryConnection(repositoryOwner, numberOfIssuesPerRequest, repositoryConnection?.PageInfo?.EndCursor).ConfigureAwait(false);
+
+                foreach (var repository in repositoryConnection.RepositoryList)
+                    yield return repository;
+            }
+            while (repositoryConnection?.PageInfo?.HasNextPage is true);
+        }
+
+        static async Task<RepositoryConnection> GetRepositoryConnection(string repositoryOwner, int numberOfRepositoriesPerRequest, string endCursor)
+        {
+            var endCursorString = string.IsNullOrWhiteSpace(endCursor) ? string.Empty : "after: \"" + endCursor + "\"";
+
+            var requestString = "query{ user(login:" + repositoryOwner + "}) { repositories(first: " + numberOfRepositoriesPerRequest + endCursorString + ") { nodes { name, description, stargazers { totalCount } } pageInfo { endCursor, hasNextPage, hasPreviousPage, startCursor } } } }";
+
+            var data = await ExecuteGraphQLRequest(() => GitHubApiClient.RepositoryConnectionQuery(new GraphQLRequest(requestString))).ConfigureAwait(false);
+
+            return data.RepositoryConnection;
         }
 
         static async Task<T> ExecuteGraphQLRequest<T>(Func<Task<GraphQLResponse<T>>> action, int numRetries = 3)

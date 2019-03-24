@@ -8,7 +8,8 @@ namespace GitHubXamarin
         public GitHubRepository() { }
 
         [JsonConstructor]
-        public GitHubRepository(Owner owner) => RepositoryOwner = owner;
+        public GitHubRepository(Owner owner, StarGazers starGazers) =>
+            (RepositoryOwner, StarGazers) = (owner, starGazers);
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -34,14 +35,30 @@ namespace GitHubXamarin
             }
         }
 
+        public int TotalStars
+        {
+            get => StarGazers?.TotalCount ?? 0;
+            set
+            {
+                if (StarGazers is null)
+                    StarGazers = new StarGazers { TotalCount = value };
+                else
+                    StarGazers.TotalCount = value;
+            }
+        }
+
         [JsonProperty("owner")]
         Owner RepositoryOwner { get; set; }
+
+        [JsonProperty("stargazers")]
+        StarGazers StarGazers { get; set; }
 
         public override string ToString()
         {
             var stringBuilder = new StringBuilder();
             stringBuilder.AppendLine($"{nameof(Name)}: {Name}");
             stringBuilder.AppendLine($"{nameof(Owner)}: {Owner}");
+            stringBuilder.AppendLine($"{nameof(TotalStars)}: {TotalStars}");
             stringBuilder.AppendLine($"{nameof(Description)}: {Description}");
             stringBuilder.AppendLine($"{nameof(ForkCount)}: {ForkCount}");
             stringBuilder.AppendLine($"{nameof(Issues)}Count: {Issues.IssueList.Count}");
@@ -55,5 +72,11 @@ namespace GitHubXamarin
     {
         [JsonProperty("login")]
         public string Login { get; set; }
+    }
+
+    public class StarGazers
+    {
+        [JsonProperty("totalCount")]
+        public int TotalCount { get; set; }
     }
 }
