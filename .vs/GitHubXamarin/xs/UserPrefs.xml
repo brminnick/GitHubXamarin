@@ -1,17 +1,27 @@
 ﻿<Properties StartupConfiguration="{8C712C8C-234F-4B8E-8D5B-325AEBAF77B2}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="GitHubXamarin/GitHubXamarin.csproj">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GitHubXamarin/Constants/GitHubConstants.cs">
     <Files>
-      <File FileName="GitHubXamarin/Services/GitHubGraphQLService.cs" Line="40" Column="65" />
+      <File FileName="GitHubXamarin/Services/GitHubGraphQLService.cs" Line="49" Column="84" />
       <File FileName="GitHubXamarin/Services/IGitHubAPI.cs" Line="18" Column="92" />
       <File FileName="GitHubXamarin/Models/GraphQLModels/GraphQLResponse.cs" Line="5" Column="11" />
-      <File FileName="GitHubXamarin/App.cs" Line="13" Column="101" />
-      <File FileName="GitHubXamarin/GitHubXamarin.csproj" Line="5" Column="29" />
+      <File FileName="GitHubXamarin/App.cs" Line="13" Column="105" />
+      <File FileName="GitHubXamarin.iOS/Main.cs" Line="7" Column="1" />
+      <File FileName="GitHubXamarin/Constants/GitHubConstants.cs" Line="8" Column="13" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="GitHubXamarin" expanded="True">
-            <Node name="GitHubXamarin" selected="True" />
+            <Node name="GitHubXamarin" expanded="True">
+              <Node name="Constants" expanded="True">
+                <Node name="GitHubConstants.cs" selected="True" />
+              </Node>
+              <Node name="Models" expanded="True">
+                <Node name="GraphQLModels" expanded="True" />
+              </Node>
+              <Node name="Services" expanded="True" />
+            </Node>
+            <Node name="GitHubXamarin.iOS" expanded="True" />
           </Node>
         </State>
       </Pad>

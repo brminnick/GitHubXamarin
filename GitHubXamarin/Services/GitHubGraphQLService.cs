@@ -41,14 +41,16 @@ namespace GitHubXamarin
         {
             RepositoryConnection repositoryConnection = null;
 
+            List<GitHubRepository> gitHubRepositoryList = new List<GitHubRepository>();
+
             do
             {
                 repositoryConnection = await GetRepositoryConnection(repositoryOwner, numberOfIssuesPerRequest, repositoryConnection?.PageInfo?.EndCursor).ConfigureAwait(false);
-
-                foreach (var repository in repositoryConnection.RepositoryList)
-                    yield return repository;
+                gitHubRepositoryList.AddRange(repositoryConnection.RepositoryList);
             }
             while (repositoryConnection?.PageInfo?.HasNextPage is true);
+
+            return gitHubRepositoryList;
         }
 
         static async Task<RepositoryConnection> GetRepositoryConnection(string repositoryOwner, int numberOfRepositoriesPerRequest, string endCursor)
