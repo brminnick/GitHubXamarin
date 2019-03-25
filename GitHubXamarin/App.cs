@@ -10,7 +10,9 @@ namespace GitHubXamarin
         {
             base.OnStart();
 
-            var temp = await GitHubGraphQLService.GetRepositories("brminnick").ConfigureAwait(false);
+            var temp = await GitHubGraphQLService.GetUser("brminnick").ConfigureAwait(false);
+            var temp2 = await GitHubGraphQLService.GetRepositories("brminnick").ConfigureAwait(false);
+            var temp3 = await GitHubGraphQLService.GetRepository("brminnick", "FaceOff");
         }
     }
 }

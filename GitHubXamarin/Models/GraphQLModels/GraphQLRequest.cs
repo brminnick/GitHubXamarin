@@ -2,7 +2,7 @@
 
 namespace GitHubXamarin
 {
-    class GraphQLRequest
+    abstract class GraphQLRequest
     {
         public GraphQLRequest(string query, string variables = null)
         {

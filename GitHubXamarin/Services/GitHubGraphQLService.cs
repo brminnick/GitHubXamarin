@@ -21,23 +21,17 @@ namespace GitHubXamarin
         #region Methods
         public static async Task<User> GetUser(string username)
         {
-            var requestString = "query { user(login:" + username + "){ name, company, createdAt, followers{ totalCount }}}";
-
-            var data = await ExecuteGraphQLRequest(() => GitHubApiClient.UserQuery(new GraphQLRequest(requestString))).ConfigureAwait(false);
-
+            var data = await ExecuteGraphQLRequest(() => GitHubApiClient.UserQuery(new UserQueryContent(username))).ConfigureAwait(false);
             return data.User;
         }
 
-        public static async Task<Repository> GetRepository(string repositoryOwner, string repositoryName, int numberOfIssuesToRequest = 100)
+        public static async Task<Repository> GetRepository(string repositoryOwner, string repositoryName, int numberOfIssuesPerRequest = 100)
         {
-            var requestString = "query { repository(owner:\"" + repositoryOwner + "\" name:\"" + repositoryName + "\"){ name, description, forkCount, owner { login }, issues(first:" + numberOfIssuesToRequest + "){ nodes { title, body, createdAt, closedAt, state }}}}";
-
-            var data = await ExecuteGraphQLRequest(() => GitHubApiClient.RepositoryQuery(new GraphQLRequest(requestString))).ConfigureAwait(false);
-
+            var data = await ExecuteGraphQLRequest(() => GitHubApiClient.RepositoryQuery(new RepositoryQueryContent(repositoryOwner, repositoryName, numberOfIssuesPerRequest))).ConfigureAwait(false);
             return data.Repository;
         }
 
-        public static async Task<List<Repository>> GetRepositories(string repositoryOwner, int numberOfIssuesPerRequest = 100)
+        public static async Task<List<Repository>> GetRepositories(string repositoryOwner, int numberOfRepositoriesPerRequest = 100)
         {
             RepositoryConnection repositoryConnection = null;
 
@@ -45,7 +39,7 @@ namespace GitHubXamarin
 
             do
             {
-                repositoryConnection = await GetRepositoryConnection(repositoryOwner, numberOfIssuesPerRequest, repositoryConnection?.PageInfo?.EndCursor).ConfigureAwait(false);
+                repositoryConnection = await GetRepositoryConnection(repositoryOwner, repositoryConnection?.PageInfo?.EndCursor, numberOfRepositoriesPerRequest).ConfigureAwait(false);
                 gitHubRepositoryList.AddRange(repositoryConnection?.RepositoryList);
             }
             while (repositoryConnection?.PageInfo?.HasNextPage is true);
@@ -53,14 +47,9 @@ namespace GitHubXamarin
             return gitHubRepositoryList;
         }
 
-        static async Task<RepositoryConnection> GetRepositoryConnection(string repositoryOwner, int numberOfRepositoriesPerRequest, string endCursor)
+        static async Task<RepositoryConnection> GetRepositoryConnection(string repositoryOwner, string endCursor, int numberOfRepositoriesPerRequest = 100)
         {
-            var endCursorString = string.IsNullOrWhiteSpace(endCursor) ? string.Empty : "after: \"" + endCursor + "\"";
-
-            var requestString = "query{ user(login:" + repositoryOwner + ") {followers{ totalCount }, repositories(first: " + numberOfRepositoriesPerRequest + endCursorString + ") { nodes { name, description, stargazers { totalCount } }, pageInfo { endCursor, hasNextPage, hasPreviousPage, startCursor } } } }";
-
-            var data = await ExecuteGraphQLRequest(() => GitHubApiClient.RepositoryConnectionQuery(new GraphQLRequest(requestString))).ConfigureAwait(false);
-
+            var data = await ExecuteGraphQLRequest(() => GitHubApiClient.RepositoryConnectionQuery(new RepositoryConnectionQueryContent(repositoryOwner, GetEndCursorString(endCursor), numberOfRepositoriesPerRequest))).ConfigureAwait(false);
             return data.GitHubUser.RepositoryConnection;
         }
 
@@ -82,6 +71,8 @@ namespace GitHubXamarin
 
             TimeSpan pollyRetryAttempt(int attemptNumber) => TimeSpan.FromSeconds(Math.Pow(2, attemptNumber));
         }
+
+        static string GetEndCursorString(string endCursor) => string.IsNullOrWhiteSpace(endCursor) ? string.Empty : "after: \"" + endCursor + "\"";
         #endregion
     }
 }
