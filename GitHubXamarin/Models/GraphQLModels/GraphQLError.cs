@@ -6,12 +6,7 @@ namespace GitHubXamarin
 {
     class GraphQLError
     {
-        public GraphQLError(string message, GraphQLLocation[] locations, IDictionary<string, JToken> additonalEntries = null)
-        {
-            Message = message;
-            Locations = locations;
-            AdditonalEntries = additonalEntries;
-        }
+        public GraphQLError(string message, GraphQLLocation[] locations) => (Message, Locations) = (message, locations);
 
         [JsonProperty("message")]
         public string Message { get; }
@@ -20,7 +15,7 @@ namespace GitHubXamarin
         public GraphQLLocation[] Locations { get; }
 
         [JsonExtensionData]
-        public IDictionary<string, JToken> AdditonalEntries { get; }
+        public IDictionary<string, JToken> AdditonalEntries { get; set; }
     }
 
     class GraphQLLocation

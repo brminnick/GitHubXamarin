@@ -3,12 +3,12 @@ using Newtonsoft.Json;
 
 namespace GitHubXamarin
 {
-    public class GitHubRepository
+    public class Repository
     {
-        public GitHubRepository() { }
+        public Repository() { }
 
         [JsonConstructor]
-        public GitHubRepository(Owner owner, StarGazers starGazers) =>
+        public Repository(Owner owner, StarGazers starGazers) =>
             (RepositoryOwner, StarGazers) = (owner, starGazers);
 
         [JsonProperty("name")]

@@ -1,25 +1,27 @@
 ﻿<Properties StartupConfiguration="{8C712C8C-234F-4B8E-8D5B-325AEBAF77B2}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="GitHubXamarin/Constants/GitHubConstants.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GitHubXamarin/App.cs">
     <Files>
-      <File FileName="GitHubXamarin/Services/GitHubGraphQLService.cs" Line="49" Column="84" />
-      <File FileName="GitHubXamarin/Services/IGitHubAPI.cs" Line="18" Column="92" />
+      <File FileName="GitHubXamarin/Services/GitHubGraphQLService.cs" Line="51" Column="1" />
+      <File FileName="GitHubXamarin/Models/User.cs" Line="17" Column="33" />
+      <File FileName="GitHubXamarin/Services/IGitHubAPI.cs" Line="18" Column="26" />
+      <File FileName="GitHubXamarin/Models/RepositoryConnectionResponse.cs" Line="10" Column="18" />
       <File FileName="GitHubXamarin/Models/GraphQLModels/GraphQLResponse.cs" Line="5" Column="11" />
-      <File FileName="GitHubXamarin/App.cs" Line="13" Column="105" />
       <File FileName="GitHubXamarin.iOS/Main.cs" Line="7" Column="1" />
-      <File FileName="GitHubXamarin/Constants/GitHubConstants.cs" Line="8" Column="13" />
+      <File FileName="GitHubXamarin/Models/GraphQLModels/GraphQLError.cs" Line="5" Column="24" />
+      <File FileName="GitHubXamarin/Models/RepositoryConnection.cs" Line="1" Column="1" />
+      <File FileName="GitHubXamarin/App.cs" Line="14" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="GitHubXamarin" expanded="True">
             <Node name="GitHubXamarin" expanded="True">
-              <Node name="Constants" expanded="True">
-                <Node name="GitHubConstants.cs" selected="True" />
-              </Node>
+              <Node name="Constants" expanded="True" />
               <Node name="Models" expanded="True">
                 <Node name="GraphQLModels" expanded="True" />
               </Node>
               <Node name="Services" expanded="True" />
+              <Node name="App.cs" selected="True" />
             </Node>
             <Node name="GitHubXamarin.iOS" expanded="True" />
           </Node>
@@ -33,6 +35,7 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/bramin/Projects/GitHub/GitHubXamarin/GitHubXamarin/App.cs" relfile="GitHubXamarin/App.cs" line="14" column="1" />
+      <Breakpoint file="/Users/bramin/Projects/GitHub/GitHubXamarin/GitHubXamarin/Services/GitHubGraphQLService.cs" relfile="GitHubXamarin/Services/GitHubGraphQLService.cs" line="51" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

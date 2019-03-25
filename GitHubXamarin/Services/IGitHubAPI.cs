@@ -12,9 +12,9 @@ namespace GitHubXamarin
         Task<GraphQLResponse<GitHubUserResponse>> UserQuery([Body] GraphQLRequest request);
 
         [Post("")]
-        Task<GraphQLResponse<GitHubRepositoryResponse>> RepositoryQuery([Body] GraphQLRequest request);
+        Task<GraphQLResponse<RepositoryResponse>> RepositoryQuery([Body] GraphQLRequest request);
 
         [Post("")]
-        Task<GraphQLResponse<GitHubRepositoryConnectionResponse>> RepositoryConnectionQuery([Body] GraphQLRequest request);
+        Task<GraphQLResponse<RepositoryConnectionResponse>> RepositoryConnectionQuery([Body] GraphQLRequest request);
     }
 }

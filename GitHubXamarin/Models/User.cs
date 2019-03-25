@@ -1,15 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 
 namespace GitHubXamarin
 {
-    public class GitHubUser
+    public class User
     {
-        public GitHubUser() { }
+        public User() { }
 
         [JsonConstructor]
-        public GitHubUser(GitHubFollowers followers) => Followers = followers;
+        public User(GitHubFollowers followers, RepositoryConnection repositoryConnection) =>
+                (Followers, RepositoryConnection) = (followers, repositoryConnection);
+
+        [JsonProperty("repositories")]
+        public RepositoryConnection RepositoryConnection { get; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
