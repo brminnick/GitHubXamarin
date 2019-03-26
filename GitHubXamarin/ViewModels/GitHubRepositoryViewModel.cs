@@ -13,7 +13,7 @@ namespace GitHubXamarin
         ObservableCollection<Repository> _repositoryCollection = new ObservableCollection<Repository>();
 
         public ICommand PullToRefreshCommand => _pullToRefreshCommand ??
-            (_pullToRefreshCommand = new AsyncCommand(() => ExecutePullToRefreshCommand("brminnick"), continueOnCapturedContext: false));
+            (_pullToRefreshCommand = new AsyncCommand(() => ExecutePullToRefreshCommand(GitHubConstants.User), continueOnCapturedContext: false));
 
         public ObservableCollection<Repository> RepositoryCollection
         {

@@ -26,6 +26,9 @@ namespace GitHubXamarin
         [JsonProperty("issues")]
         public IssuesConnection Issues { get; set; }
 
+        [JsonProperty("url")]
+        public Uri Uri { get; set; }
+
         public int StarCount
         {
             get => StarGazers?.TotalCount ?? 0;

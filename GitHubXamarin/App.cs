@@ -1,9 +1,21 @@
 ﻿using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace GitHubXamarin
 {
-    public class App : Application
+    public class App : Xamarin.Forms.Application
     {
-        public App() => MainPage = new GitHubRepositoryPage();
+        public App()
+        {
+            var navigationPage = new Xamarin.Forms.NavigationPage(new GitHubRepositoryPage())
+            {
+                BarBackgroundColor = ColorConstants.DarkBlue,
+                BarTextColor = Color.White
+            };
+            navigationPage.On<iOS>().PrefersLargeTitles();
+
+            MainPage = navigationPage;
+        }
     }
 }

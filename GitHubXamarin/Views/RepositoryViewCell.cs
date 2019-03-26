@@ -9,6 +9,7 @@ namespace GitHubXamarin
 
         const int _smallFontSize = 9;
         const int _repositoryDetailColumnSize = 50;
+
         const string _starEmoji = "\U00002B50";
         const string _tuningForkEmoji = "\U00002442";
         const string _antEmoji = "\U0001F41C";
@@ -35,7 +36,8 @@ namespace GitHubXamarin
                 FontAttributes = FontAttributes.Bold,
                 HorizontalTextAlignment = TextAlignment.Start,
                 VerticalTextAlignment = TextAlignment.Start,
-                LineBreakMode = LineBreakMode.TailTruncation
+                LineBreakMode = LineBreakMode.TailTruncation,
+                HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
             _repositoryDescriptionLabel = new Label
@@ -69,8 +71,11 @@ namespace GitHubXamarin
 
             var grid = new Grid
             {
+                BackgroundColor = ColorConstants.LightBlue,
+
                 Margin = new Thickness(5, 5, 5, 0),
                 RowSpacing = 2,
+
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.StartAndExpand,
 
