@@ -38,7 +38,7 @@ namespace GitHubXamarin
     class RepositoryConnectionQueryContent : GraphQLRequest
     {
         public RepositoryConnectionQueryContent(string repositoryOwner, string endCursorString, int numberOfRepositoriesPerRequest = 100)
-            : base("query{ user(login:" + repositoryOwner + ") { followers { totalCount }, repositories(first:" + numberOfRepositoriesPerRequest + endCursorString + ") { nodes { name, description, forkCount, owner { login }, stargazers { totalCount }, }, pageInfo { endCursor, hasNextPage, hasPreviousPage, startCursor } } } }")
+            : base("query{ user(login:" + repositoryOwner + ") {followers { totalCount }, repositories(first:" + numberOfRepositoriesPerRequest + endCursorString + ") { nodes { name, description, forkCount, owner { avatarUrl, login }, stargazers { totalCount }, }, pageInfo { endCursor, hasNextPage, hasPreviousPage, startCursor } } } }")
         {
 
         }

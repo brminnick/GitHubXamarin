@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Newtonsoft.Json;
+using System;
 
 namespace GitHubXamarin
 {
@@ -8,8 +9,7 @@ namespace GitHubXamarin
         public Repository() { }
 
         [JsonConstructor]
-        public Repository(Owner owner, StarGazers starGazers) =>
-            (RepositoryOwner, StarGazers) = (owner, starGazers);
+        public Repository(StarGazers starGazers) => StarGazers = starGazers;
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -20,20 +20,11 @@ namespace GitHubXamarin
         [JsonProperty("forkCount")]
         public long ForkCount { get; set; }
 
+        [JsonProperty("owner")]
+        public RepositoryOwner Owner { get; set; }
+
         [JsonProperty("issues")]
         public Issues Issues { get; set; }
-
-        public string Owner
-        {
-            get => RepositoryOwner?.Login;
-            set
-            {
-                if (RepositoryOwner is null)
-                    RepositoryOwner = new Owner { Login = value };
-                else
-                    RepositoryOwner.Login = value;
-            }
-        }
 
         public int TotalStars
         {
@@ -47,9 +38,6 @@ namespace GitHubXamarin
             }
         }
 
-        [JsonProperty("owner")]
-        Owner RepositoryOwner { get; set; }
-
         [JsonProperty("stargazers")]
         StarGazers StarGazers { get; set; }
 
@@ -57,21 +45,25 @@ namespace GitHubXamarin
         {
             var stringBuilder = new StringBuilder();
             stringBuilder.AppendLine($"{nameof(Name)}: {Name}");
-            stringBuilder.AppendLine($"{nameof(Owner)}: {Owner}");
+            stringBuilder.AppendLine($"{nameof(Owner)} {nameof(Owner.Login)}: {Owner?.Login}");
+            stringBuilder.AppendLine($"{nameof(Owner)} {nameof(Owner.AvatarUrl)}: {Owner?.AvatarUrl}");
             stringBuilder.AppendLine($"{nameof(TotalStars)}: {TotalStars}");
             stringBuilder.AppendLine($"{nameof(Description)}: {Description}");
             stringBuilder.AppendLine($"{nameof(ForkCount)}: {ForkCount}");
-            stringBuilder.AppendLine($"{nameof(Issues)}Count: {Issues.IssueList.Count}");
+            stringBuilder.AppendLine($"{nameof(Issues)}Count: {Issues?.IssueList.Count}");
 
             return stringBuilder.ToString();
         }
 
     }
 
-    public class Owner
+    public class RepositoryOwner
     {
         [JsonProperty("login")]
         public string Login { get; set; }
+
+        [JsonProperty("avatarUrl")]
+        public Uri AvatarUrl { get; set; }
     }
 
     public class StarGazers

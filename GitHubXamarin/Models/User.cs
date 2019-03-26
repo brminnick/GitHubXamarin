@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 
@@ -10,11 +9,10 @@ namespace GitHubXamarin
         public User() { }
 
         [JsonConstructor]
-        public User(GitHubFollowers followers, RepositoryConnection repositoryConnection) =>
-                (Followers, RepositoryConnection) = (followers, repositoryConnection);
+        public User(GitHubFollowers followers) => Followers = followers;
 
         [JsonProperty("repositories")]
-        public RepositoryConnection RepositoryConnection { get; }
+        public RepositoryConnection RepositoryConnection { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
