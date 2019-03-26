@@ -33,7 +33,7 @@ namespace GitHubXamarin
             {
                 var repositoryList = await GitHubGraphQLService.GetRepositories(repositoryOwner).ConfigureAwait(false); 
 
-                foreach (var repository in repositoryList.OrderByDescending(x => x.TotalStars))
+                foreach (var repository in repositoryList.OrderByDescending(x => x.StarCount))
                 {
                     _repositoryCollection.Add(repository);
                 }

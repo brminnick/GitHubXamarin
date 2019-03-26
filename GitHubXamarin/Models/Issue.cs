@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace GitHubXamarin
 {
-    public class Issues
-    {
-        [JsonProperty("nodes")]
-        public List<Issue> IssueList { get; set; }
-    }
-
     public class Issue
     {
         [JsonProperty("title")]

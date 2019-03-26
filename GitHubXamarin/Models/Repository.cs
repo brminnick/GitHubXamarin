@@ -24,9 +24,9 @@ namespace GitHubXamarin
         public RepositoryOwner Owner { get; set; }
 
         [JsonProperty("issues")]
-        public Issues Issues { get; set; }
+        public IssuesConnection Issues { get; set; }
 
-        public int TotalStars
+        public int StarCount
         {
             get => StarGazers?.TotalCount ?? 0;
             set
@@ -47,7 +47,7 @@ namespace GitHubXamarin
             stringBuilder.AppendLine($"{nameof(Name)}: {Name}");
             stringBuilder.AppendLine($"{nameof(Owner)} {nameof(Owner.Login)}: {Owner?.Login}");
             stringBuilder.AppendLine($"{nameof(Owner)} {nameof(Owner.AvatarUrl)}: {Owner?.AvatarUrl}");
-            stringBuilder.AppendLine($"{nameof(TotalStars)}: {TotalStars}");
+            stringBuilder.AppendLine($"{nameof(StarCount)}: {StarCount}");
             stringBuilder.AppendLine($"{nameof(Description)}: {Description}");
             stringBuilder.AppendLine($"{nameof(ForkCount)}: {ForkCount}");
             stringBuilder.AppendLine($"{nameof(Issues)}Count: {Issues?.IssueList.Count}");

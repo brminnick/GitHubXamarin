@@ -13,7 +13,8 @@ namespace GitHubXamarin
             {
                 IsPullToRefreshEnabled = true,
                 ItemTemplate = new DataTemplate(typeof(RepositoryViewCell)),
-
+                SeparatorVisibility = SeparatorVisibility.None,
+                RowHeight = RepositoryViewCell.ImageHeight,
             }; 
             _listView.SetBinding(Xamarin.Forms.ListView.IsRefreshingProperty, nameof(ViewModel.IsRefreshing));
             _listView.SetBinding(Xamarin.Forms.ListView.ItemsSourceProperty, nameof(ViewModel.RepositoryCollection));

@@ -9,6 +9,7 @@ namespace GitHubXamarin.iOS
         public override bool FinishedLaunching(UIApplication uiApplication, NSDictionary launchOptions)
         {
             global::Xamarin.Forms.Forms.Init();
+            ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(uiApplication, launchOptions);

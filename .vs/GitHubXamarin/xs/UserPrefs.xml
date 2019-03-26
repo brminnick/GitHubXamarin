@@ -1,24 +1,24 @@
 ﻿<Properties StartupConfiguration="{8C712C8C-234F-4B8E-8D5B-325AEBAF77B2}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="GitHubXamarin/Views/RepositoryViewCell.cs">
     <Files>
-      <File FileName="GitHubXamarin/Services/IGitHubAPI.cs" Line="40" Column="16" />
+      <File FileName="GitHubXamarin/Views/RepositoryViewCell.cs" Line="104" Column="32" />
+      <File FileName="GitHubXamarin/Pages/GitHubRepositoryPage.cs" Line="17" Column="60" />
+      <File FileName="GitHubXamarin/Services/GitHubGraphQLService.cs" Line="52" Column="114" />
+      <File FileName="GitHubXamarin/Services/IGitHubAPI.cs" Line="41" Column="282" />
       <File FileName="GitHubXamarin.iOS/Main.cs" Line="7" Column="1" />
-      <File FileName="GitHubXamarin/Services/GitHubGraphQLService.cs" Line="52" Column="119" />
-      <File FileName="GitHubXamarin/App.cs" Line="7" Column="60" />
-      <File FileName="GitHubXamarin/Views/RepositoryViewCell.cs" Line="13" Column="30" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="GitHubXamarin" expanded="True">
             <Node name="GitHubXamarin" expanded="True">
-              <Node name="Dependencies" expanded="True" />
               <Node name="Models" expanded="True" />
+              <Node name="Pages" expanded="True" />
+              <Node name="Services" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="RepositoryViewCell.cs" selected="True" />
               </Node>
             </Node>
-            <Node name="GitHubXamarin.Android" expanded="True" />
             <Node name="GitHubXamarin.iOS" expanded="True" />
           </Node>
         </State>
@@ -26,7 +26,7 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.GitHubXamarin.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.9535D9E9-BA27-4A2C-8F62-E969FE65DCEE" />
+  <MonoDevelop.Ide.ItemProperties.GitHubXamarin.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.29D67CAE-59B5-4AF9-BB1A-E12EDDE4DCE8" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
