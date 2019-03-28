@@ -22,7 +22,8 @@ namespace GitHubXamarin
                 SeparatorVisibility = SeparatorVisibility.None,
                 RowHeight = RepositoryViewCell.ImageHeight,
                 RefreshControlColor = ColorConstants.DarkBlue,
-                BackgroundColor = ColorConstants.LightBlue
+                BackgroundColor = ColorConstants.LightBlue,
+                SelectionMode = ListViewSelectionMode.None
             };
             _listView.ItemTapped += HandleListViewItemTapped;
             _listView.SetBinding(ListView.IsRefreshingProperty, nameof(ViewModel.IsRefreshing));

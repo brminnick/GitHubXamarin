@@ -61,7 +61,7 @@ namespace GitHubXamarin
             }
             catch (ApiException e) when (e.StatusCode is System.Net.HttpStatusCode.Unauthorized)
             {
-                OnPullToRefreshFailed("Invalid Api Token", "Edit the Token on the Settings Page");
+                OnPullToRefreshFailed("Invalid Api Token", "Edit the Github API Token in Settings");
             }
             catch (Exception e)
             {

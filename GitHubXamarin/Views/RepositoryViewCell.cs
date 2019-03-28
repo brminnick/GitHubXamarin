@@ -27,7 +27,6 @@ namespace GitHubXamarin
             _image = new CircleImage
             {
                 HeightRequest = ImageHeight,
-                BackgroundColor = Color.Blue,
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Center,
             };
