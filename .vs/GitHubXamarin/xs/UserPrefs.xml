@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.ItemProperties.GitHubXamarin.Android PreferredExecutionTarget="Android.pixel_api28" />
   <MonoDevelop.Ide.Workbench ActiveDocument="GitHubXamarin/Pages/RepositoryPage.cs">
     <Files>
-      <File FileName="GitHubXamarin/Pages/RepositoryPage.cs" Line="26" Column="35" />
+      <File FileName="GitHubXamarin/Pages/RepositoryPage.cs" Line="15" Column="10" />
       <File FileName="GitHubXamarin/Services/GitHubGraphQLService.cs" Line="1" Column="1" />
       <File FileName="GitHubXamarin/ViewModels/SettingsViewModel.cs" Line="1" Column="1" />
       <File FileName="GitHubXamarin.Android/Properties/AndroidManifest.xml" Line="1" Column="1" />
