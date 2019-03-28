@@ -1,5 +1,6 @@
-﻿using Xamarin.Forms;
-using ImageCircle.Forms.Plugin.Abstractions;
+﻿using ImageCircle.Forms.Plugin.Abstractions;
+
+using Xamarin.Forms;
 
 namespace GitHubXamarin
 {
@@ -7,7 +8,7 @@ namespace GitHubXamarin
     {
         public const int ImageHeight = 100;
 
-        const int _smallFontSize = 9;
+        const int _smallFontSize = 12;
         const int _repositoryDetailColumnSize = 50;
 
         const string _starEmoji = "\U00002B50";
@@ -31,7 +32,7 @@ namespace GitHubXamarin
                 VerticalOptions = LayoutOptions.Center,
             };
 
-            _repositoryNameLabel = new Label
+            _repositoryNameLabel = new DarkBlueLabel
             {
                 FontAttributes = FontAttributes.Bold,
                 HorizontalTextAlignment = TextAlignment.Start,
@@ -40,7 +41,7 @@ namespace GitHubXamarin
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
 
-            _repositoryDescriptionLabel = new Label
+            _repositoryDescriptionLabel = new DarkBlueLabel
             {
                 Margin = new Thickness(2, 0, 0, 0),
                 FontSize = _smallFontSize,
@@ -50,19 +51,19 @@ namespace GitHubXamarin
                 FontAttributes = FontAttributes.Italic
             };
 
-            _starsLabel = new Label
+            _starsLabel = new DarkBlueLabel
             {
                 HorizontalTextAlignment = TextAlignment.Start,
                 FontSize = _smallFontSize,
             };
 
-            _forksLabel = new Label
+            _forksLabel = new DarkBlueLabel
             {
                 HorizontalTextAlignment = TextAlignment.Start,
                 FontSize = _smallFontSize,
             };
 
-            _issuesLabel = new Label
+            _issuesLabel = new DarkBlueLabel
             {
                 HorizontalTextAlignment = TextAlignment.Start,
                 FontSize = _smallFontSize,
@@ -137,6 +138,11 @@ namespace GitHubXamarin
                 _forksLabel.Text = null;
                 _issuesLabel.Text = null;
             }
+        }
+
+        class DarkBlueLabel : Label
+        {
+            public DarkBlueLabel() => TextColor = ColorConstants.DarkBlue;
         }
     }
 }

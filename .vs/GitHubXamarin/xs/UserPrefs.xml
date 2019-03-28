@@ -1,17 +1,30 @@
 ﻿<Properties StartupConfiguration="{8C712C8C-234F-4B8E-8D5B-325AEBAF77B2}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="GitHubXamarin/Constants/GitHubConstants.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GitHubXamarin/Pages/RepositoryPage.cs">
     <Files>
-      <File FileName="GitHubXamarin/Constants/ColorConstants.cs" Line="6" Column="70" />
-      <File FileName="GitHubXamarin/Constants/GitHubConstants.cs" Line="7" Column="20" />
+      <File FileName="GitHubXamarin/Pages/SettingsPage.cs" Line="94" Column="30" />
+      <File FileName="GitHubXamarin/Pages/RepositoryPage.cs" Line="57" Column="57" />
+      <File FileName="GitHubXamarin/ViewModels/RepositoryViewModel.cs" Line="67" Column="14" />
+      <File FileName="GitHubXamarin/Services/GitHubGraphQLService.cs" Line="62" Column="113" />
+      <File FileName="GitHubXamarin/ViewModels/SettingsViewModel.cs" Line="68" Column="1" />
+      <File FileName="GitHubXamarin.Android/Properties/AndroidManifest.xml" Line="6" Column="18" />
+      <File FileName="GitHubXamarin/Views/RepositoryViewCell.cs" Line="12" Column="38" />
+      <File FileName="GitHubXamarin/Constants/ColorConstants.cs" Line="7" Column="70" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="GitHubXamarin" expanded="True">
             <Node name="GitHubXamarin" expanded="True">
-              <Node name="Constants" expanded="True">
-                <Node name="GitHubConstants.cs" selected="True" />
+              <Node name="Constants" expanded="True" />
+              <Node name="Pages" expanded="True">
+                <Node name="Base" expanded="True" />
+                <Node name="RepositoryPage.cs" selected="True" />
               </Node>
+              <Node name="Views" expanded="True" />
+            </Node>
+            <Node name="GitHubXamarin.Android" expanded="True">
+              <Node name="Assets" expanded="True" />
+              <Node name="Properties" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -22,7 +35,11 @@
   <MonoDevelop.Ide.ItemProperties.GitHubXamarin.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.29D67CAE-59B5-4AF9-BB1A-E12EDDE4DCE8" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/bramin/Projects/GitHub/GitHubXamarin/GitHubXamarin/App.cs" relfile="GitHubXamarin/App.cs" line="14" column="1" />
+      <Breakpoint file="/Users/bramin/Projects/GitHub/GitHubXamarin/GitHubXamarin/ViewModels/RepositoryViewModel.cs" relfile="GitHubXamarin/ViewModels/RepositoryViewModel.cs" line="68" column="1" />
+      <Breakpoint file="/Users/bramin/Projects/GitHub/GitHubXamarin/GitHubXamarin/ViewModels/SettingsViewModel.cs" relfile="GitHubXamarin/ViewModels/SettingsViewModel.cs" line="68" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
