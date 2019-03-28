@@ -3,19 +3,17 @@ using Refit;
 
 namespace GitHubXamarin
 {
-    [Headers("Content-Type: application/json",
-                "Authorization: bearer " + GitHubConstants.PersonalAccessToken,
-                "User-Agent: GitHubXamarin")]
+    [Headers("User-Agent: " + nameof(GitHubXamarin))]
     interface IGitHubAPI
     {
         [Post("")]
-        Task<GraphQLResponse<GitHubUserResponse>> UserQuery([Body] UserQueryContent request);
+        Task<GraphQLResponse<GitHubUserResponse>> UserQuery([Body] UserQueryContent request, [Header("Authorization")] string authorization);
 
         [Post("")]
-        Task<GraphQLResponse<RepositoryResponse>> RepositoryQuery([Body] RepositoryQueryContent request);
+        Task<GraphQLResponse<RepositoryResponse>> RepositoryQuery([Body] RepositoryQueryContent request, [Header("Authorization")] string authorization);
 
         [Post("")]
-        Task<GraphQLResponse<RepositoryConnectionResponse>> RepositoryConnectionQuery([Body] RepositoryConnectionQueryContent request);
+        Task<GraphQLResponse<RepositoryConnectionResponse>> RepositoryConnectionQuery([Body] RepositoryConnectionQueryContent request, [Header("Authorization")] string authorization);
     }
 
     class UserQueryContent : GraphQLRequest
