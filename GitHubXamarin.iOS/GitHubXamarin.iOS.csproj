@@ -43,6 +43,7 @@
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
