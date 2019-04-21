@@ -1,8 +1,8 @@
-﻿using System.Windows.Input;
-using AsyncAwaitBestPractices.MVVM;
-using AsyncAwaitBestPractices;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using AsyncAwaitBestPractices;
+using AsyncAwaitBestPractices.MVVM;
 
 namespace GitHubXamarin
 {

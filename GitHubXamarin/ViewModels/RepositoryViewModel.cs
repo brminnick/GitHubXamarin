@@ -6,6 +6,7 @@ using System.Windows.Input;
 
 using AsyncAwaitBestPractices;
 using AsyncAwaitBestPractices.MVVM;
+
 using Refit;
 
 namespace GitHubXamarin

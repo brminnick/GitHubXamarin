@@ -67,7 +67,8 @@ namespace GitHubXamarin
                                 (
                                     numRetries,
                                     pollyRetryAttempt
-                                ).ExecuteAsync(action);
+                                ).ExecuteAsync(action)
+                                .ConfigureAwait(false);
 
 
             if (response.Errors != null)

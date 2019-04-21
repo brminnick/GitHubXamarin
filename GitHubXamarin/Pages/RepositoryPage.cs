@@ -5,7 +5,6 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace GitHubXamarin
-
 {
     class RepositoryPage : BaseContentPage<RepositoryViewModel>
     {

@@ -5,11 +5,11 @@
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Xamarin.Forms" Version="3.6.0.264807" />
+        <PackageReference Include="Xamarin.Forms" Version="3.6.0.344457" />
         <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
-        <PackageReference Include="Refit" Version="4.6.99" />
+        <PackageReference Include="Refit" Version="4.6.107" />
         <PackageReference Include="Polly" Version="7.1.0" />
-        <PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="2.1.0" />
+        <PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="2.1.1" />
         <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
         <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
     </ItemGroup>
