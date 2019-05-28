@@ -1,21 +1,27 @@
-﻿<Properties StartupConfiguration="{E3B1DD1C-E709-402D-834C-1235A58C1291}|Default">
+﻿<Properties StartupConfiguration="{8C712C8C-234F-4B8E-8D5B-325AEBAF77B2}|Default">
   <MonoDevelop.Ide.ItemProperties.GitHubXamarin.Android PreferredExecutionTarget="Android.pixel_api28" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GitHubXamarin/Models/User.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GitHubXamarin/Pages/Base/BaseNavigationPage.cs">
     <Files>
-      <File FileName="GitHubXamarin/ViewModels/SettingsViewModel.cs" Line="6" Column="1" />
-      <File FileName="GitHubXamarin/ViewModels/RepositoryViewModel.cs" Line="9" Column="1" />
-      <File FileName="GitHubXamarin/ViewModels/Base/BaseViewModel.cs" Line="1" Column="1" />
-      <File FileName="GitHubXamarin/Models/User.cs" Line="1" Column="1" />
+      <File FileName="GitHubXamarin.iOS/AppDelegate.cs" Line="7" Column="56" />
+      <File FileName="GitHubXamarin/App.cs" Line="5" Column="43" />
+      <File FileName="GitHubXamarin/Pages/Base/BaseNavigationPage.cs" Line="14" Column="41" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="GitHubXamarin" expanded="True">
             <Node name="GitHubXamarin" expanded="True">
-              <Node name="Models" expanded="True">
-                <Node name="User.cs" selected="True" />
+              <Node name="Pages" expanded="True">
+                <Node name="Base" expanded="True">
+                  <Node name="BaseNavigationPage.cs" selected="True" />
+                </Node>
               </Node>
-              <Node name="Services" expanded="True" />
+            </Node>
+            <Node name="GitHubXamarin.Android" expanded="True">
+              <Node name="Packages" expanded="True" />
+            </Node>
+            <Node name="GitHubXamarin.iOS" expanded="True">
+              <Node name="Packages" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -23,7 +29,7 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.GitHubXamarin.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.49F13F06-2A20-4F42-AC39-C1ECDBAC2B68" />
+  <MonoDevelop.Ide.ItemProperties.GitHubXamarin.iOS automaticSigning="False" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.49F13F06-2A20-4F42-AC39-C1ECDBAC2B68" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
