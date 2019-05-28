@@ -11,7 +11,7 @@ namespace GitHubXamarin
             BarBackgroundColor = ColorConstants.MediumBlue;
             BarTextColor = Color.White;
 
-            On<iOS>().PrefersLargeTitles();
+            On<iOS>().SetPrefersLargeTitles(true);
         }
     }
 }

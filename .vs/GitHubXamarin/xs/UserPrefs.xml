@@ -1,10 +1,11 @@
 ﻿<Properties StartupConfiguration="{8C712C8C-234F-4B8E-8D5B-325AEBAF77B2}|Default">
   <MonoDevelop.Ide.ItemProperties.GitHubXamarin.Android PreferredExecutionTarget="Android.pixel_api28" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="GitHubXamarin/Pages/Base/BaseNavigationPage.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="GitHubXamarin/Pages/RepositoryPage.cs">
     <Files>
       <File FileName="GitHubXamarin.iOS/AppDelegate.cs" Line="7" Column="56" />
       <File FileName="GitHubXamarin/App.cs" Line="5" Column="43" />
-      <File FileName="GitHubXamarin/Pages/Base/BaseNavigationPage.cs" Line="14" Column="41" />
+      <File FileName="GitHubXamarin/Pages/Base/BaseNavigationPage.cs" Line="14" Column="49" />
+      <File FileName="GitHubXamarin/Pages/RepositoryPage.cs" Line="23" Column="46" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,17 +13,12 @@
           <Node name="GitHubXamarin" expanded="True">
             <Node name="GitHubXamarin" expanded="True">
               <Node name="Pages" expanded="True">
-                <Node name="Base" expanded="True">
-                  <Node name="BaseNavigationPage.cs" selected="True" />
-                </Node>
+                <Node name="Base" expanded="True" />
+                <Node name="RepositoryPage.cs" selected="True" />
               </Node>
             </Node>
-            <Node name="GitHubXamarin.Android" expanded="True">
-              <Node name="Packages" expanded="True" />
-            </Node>
-            <Node name="GitHubXamarin.iOS" expanded="True">
-              <Node name="Packages" expanded="True" />
-            </Node>
+            <Node name="GitHubXamarin.Android" expanded="True" />
+            <Node name="GitHubXamarin.iOS" expanded="True" />
           </Node>
         </State>
       </Pad>

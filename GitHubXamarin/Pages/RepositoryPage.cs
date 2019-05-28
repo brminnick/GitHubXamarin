@@ -20,7 +20,7 @@ namespace GitHubXamarin
                 ItemTemplate = new DataTemplate(typeof(RepositoryViewCell)),
                 SeparatorVisibility = SeparatorVisibility.None,
                 RowHeight = RepositoryViewCell.ImageHeight,
-                RefreshControlColor = ColorConstants.DarkBlue,
+                RefreshControlColor = Device.RuntimePlatform is Device.iOS ? Color.White : ColorConstants.DarkBlue,
                 BackgroundColor = ColorConstants.LightBlue,
                 SelectionMode = ListViewSelectionMode.None
             };
@@ -29,7 +29,7 @@ namespace GitHubXamarin
             _listView.SetBinding(ListView.ItemsSourceProperty, nameof(ViewModel.RepositoryCollection));
             _listView.SetBinding(ListView.RefreshCommandProperty, nameof(ViewModel.PullToRefreshCommand));
 
-            var settingsToolbarItem = new ToolbarItem { Icon = "Settings" };
+            var settingsToolbarItem = new ToolbarItem { IconImageSource = "Settings" };
             settingsToolbarItem.Clicked += HandleSettingsToolbarItem;
             ToolbarItems.Add(settingsToolbarItem);
 
