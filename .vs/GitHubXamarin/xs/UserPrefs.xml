@@ -1,20 +1,14 @@
-﻿<Properties StartupConfiguration="{8C712C8C-234F-4B8E-8D5B-325AEBAF77B2}|Default">
+﻿<Properties StartupConfiguration="{8C712C8C-234F-4B8E-8D5B-325AEBAF77B2}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
   <MonoDevelop.Ide.ItemProperties.GitHubXamarin.Android PreferredExecutionTarget="Android.pixel_api28" />
   <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="GitHubXamarin" expanded="True" selected="True">
-            <Node name="GitHubXamarin" expanded="True">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
-              </Node>
-            </Node>
-            <Node name="GitHubXamarin.Android" expanded="True">
-              <Node name="Packages" expanded="True" />
-            </Node>
+          <Node name="GitHubXamarin" expanded="True">
+            <Node name="GitHubXamarin" expanded="True" />
+            <Node name="GitHubXamarin.Android" expanded="True" />
             <Node name="GitHubXamarin.iOS" expanded="True">
-              <Node name="Packages" expanded="True" />
+              <Node name="AppDelegate.cs" selected="True" />
             </Node>
           </Node>
         </State>
