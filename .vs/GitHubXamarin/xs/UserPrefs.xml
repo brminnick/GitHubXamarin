@@ -1,15 +1,22 @@
-﻿<Properties StartupConfiguration="{8C712C8C-234F-4B8E-8D5B-325AEBAF77B2}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
+﻿<Properties StartupConfiguration="{8C712C8C-234F-4B8E-8D5B-325AEBAF77B2}|Default">
   <MonoDevelop.Ide.ItemProperties.GitHubXamarin.Android PreferredExecutionTarget="Android.pixel_api28" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="GitHubXamarin.Android/MainActivity.cs">
+    <Files>
+      <File FileName="GitHubXamarin/Views/RepositoryViewCell.cs" Line="1" Column="1" />
+      <File FileName="GitHubXamarin.iOS/AppDelegate.cs" Line="13" Column="88" />
+      <File FileName="GitHubXamarin.Android/MainActivity.cs" Line="1" Column="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="GitHubXamarin" expanded="True">
-            <Node name="GitHubXamarin" expanded="True" />
-            <Node name="GitHubXamarin.Android" expanded="True" />
-            <Node name="GitHubXamarin.iOS" expanded="True">
-              <Node name="AppDelegate.cs" selected="True" />
+            <Node name="GitHubXamarin" expanded="True">
+              <Node name="Views" expanded="True" />
             </Node>
+            <Node name="GitHubXamarin.Android" expanded="True">
+              <Node name="MainActivity.cs" selected="True" />
+            </Node>
+            <Node name="GitHubXamarin.iOS" expanded="True" />
           </Node>
         </State>
       </Pad>
