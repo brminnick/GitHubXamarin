@@ -20,7 +20,6 @@ namespace GitHubXamarin
         #region Fields
         bool _isRefreshing;
         ICommand _pullToRefreshCommand;
-        ObservableCollection<Repository> _repositoryCollection = new ObservableCollection<Repository>();
         #endregion
 
         #region Events
@@ -35,11 +34,7 @@ namespace GitHubXamarin
         public ICommand PullToRefreshCommand => _pullToRefreshCommand ??
             (_pullToRefreshCommand = new AsyncCommand(() => ExecutePullToRefreshCommand(GitHubSettings.User), continueOnCapturedContext: false));
 
-        public ObservableCollection<Repository> RepositoryCollection
-        {
-            get => _repositoryCollection;
-            set => SetProperty(ref _repositoryCollection, value);
-        }
+        public ObservableCollection<Repository> RepositoryCollection { get; } = new ObservableCollection<Repository>();
 
         public bool IsRefreshing
         {
@@ -57,7 +52,7 @@ namespace GitHubXamarin
 
                 foreach (var repository in repositoryList.OrderByDescending(x => x.StarCount))
                 {
-                    _repositoryCollection.Add(repository);
+                    RepositoryCollection.Add(repository);
                 }
             }
             catch (ApiException e) when (e.StatusCode is System.Net.HttpStatusCode.Unauthorized)

@@ -1,19 +1,18 @@
 ﻿using ImageCircle.Forms.Plugin.Abstractions;
-
 using Xamarin.Forms;
 
 namespace GitHubXamarin
 {
     class RepositoryViewCell : ViewCell
     {
-        public const int ImageHeight = 100;
+        public const int ImageHeight = 105;
 
         const int _smallFontSize = 12;
         const int _repositoryDetailColumnSize = 50;
 
-        const string _starEmoji = "\U00002B50";
-        const string _tuningForkEmoji = "\U00002442";
-        const string _antEmoji = "\U0001F41C";
+        const string _starEmoji = "⭐️";
+        const string _tuningForkEmoji = "⑂";
+        const string _antEmoji = "🐜";
 
         readonly CircleImage _image;
         readonly Label _repositoryNameLabel;
@@ -42,7 +41,6 @@ namespace GitHubXamarin
 
             _repositoryDescriptionLabel = new DarkBlueLabel
             {
-                Margin = new Thickness(2, 0, 0, 0),
                 FontSize = _smallFontSize,
                 LineBreakMode = LineBreakMode.WordWrap,
                 HorizontalTextAlignment = TextAlignment.Start,
@@ -81,7 +79,7 @@ namespace GitHubXamarin
 
                 RowDefinitions = {
                     new RowDefinition { Height = new GridLength(20, GridUnitType.Absolute) },
-                    new RowDefinition { Height = new GridLength(40, GridUnitType.Absolute) },
+                    new RowDefinition { Height = new GridLength(45, GridUnitType.Absolute) },
                     new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
                 },
                 ColumnDefinitions = {
@@ -113,29 +111,21 @@ namespace GitHubXamarin
         {
             base.OnBindingContextChanged();
 
+            _image.Source = null;
+            _repositoryNameLabel.Text = null;
+            _repositoryDescriptionLabel.Text = null;
+            _starsLabel.Text = null;
+            _forksLabel.Text = null;
+            _issuesLabel.Text = null;
+
             if (BindingContext is Repository repository)
             {
                 _image.Source = repository.Owner.AvatarUrl;
                 _repositoryNameLabel.Text = repository.Name;
                 _repositoryDescriptionLabel.Text = repository.Description;
-                _starsLabel.Text = $"{_starEmoji}️ {repository.StarCount}";
-                _forksLabel.Text = $"{_tuningForkEmoji}️ {repository.ForkCount}";
-
-                if (repository?.Issues?.IssuesCount >= 0)
-                    _issuesLabel.Text = $"{_antEmoji} {repository.Issues.IssuesCount}";
-                else if (repository?.Issues?.IssueList?.Count >= 0)
-                    _issuesLabel.Text = $"{_antEmoji} {repository.Issues?.IssueList?.Count}";
-                else
-                    _issuesLabel.Text = null;
-            }
-            else
-            {
-                _image.Source = null;
-                _repositoryNameLabel.Text = null;
-                _repositoryDescriptionLabel.Text = null;
-                _starsLabel.Text = null;
-                _forksLabel.Text = null;
-                _issuesLabel.Text = null;
+                _starsLabel.Text = $"{_starEmoji} {repository.StarCount}";
+                _forksLabel.Text = $"{_tuningForkEmoji} {repository.ForkCount}";
+                _issuesLabel.Text = $"{_antEmoji} {repository.IssuesCount}";
             }
         }
 

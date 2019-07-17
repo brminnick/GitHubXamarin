@@ -4,16 +4,12 @@ namespace GitHubXamarin
 {
     public class PageInfo
     {
-        [JsonProperty("endCursor")]
-        public string EndCursor { get; set; }
+        public PageInfo(string endCursor, bool hasNextPage, bool hasPreviousPage, string startCursor) =>
+            (EndCursor, HasNextPage, HasPreviousPage, StartCursor) = (endCursor, hasNextPage, hasPreviousPage, startCursor);
 
-        [JsonProperty("hasNextPage")]
-        public bool HasNextPage { get; set; }
-
-        [JsonProperty("hasPreviousPage")]
-        public bool HasPreviousPage { get; set; }
-
-        [JsonProperty("startCursor")]
-        public string StartCursor { get; set; }
+        public string EndCursor { get; }
+        public bool HasNextPage { get; }
+        public bool HasPreviousPage { get; }
+        public string StartCursor { get; }
     }
 }

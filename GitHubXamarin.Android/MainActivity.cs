@@ -25,6 +25,8 @@ namespace GitHubXamarin.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer.Init();
+
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             FFImageLoading.Forms.Platform.CachedImageRenderer.InitImageViewHandler();
 
             LoadApplication(new App());

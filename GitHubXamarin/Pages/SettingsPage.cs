@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -19,13 +20,22 @@ namespace GitHubXamarin
 
             var usernameLabel = new MediumBlueLabel(_gitHubUserName);
 
-            var usernameEntry = new SettingsEntry(_gitHubUserName);
+            var usernameEntry = new SettingsEntry(_gitHubUserName)
+            {
+                ReturnType = ReturnType.Next,
+                ReturnCommand = new Command(() => _tokenEntry.Focus())
+            };
             usernameEntry.SetBinding(Xamarin.Forms.Entry.TextProperty, nameof(ViewModel.UsernameEntryText));
 
             var tokenLabel = new MediumBlueLabel(_gitHubApiToken);
 
-            _tokenEntry = new SettingsEntry(_gitHubApiToken) { IsPassword = true };
+            _tokenEntry = new SettingsEntry(_gitHubApiToken)
+            {
+                IsPassword = true,
+                ReturnType = ReturnType.Go
+            };
             _tokenEntry.SetBinding(Xamarin.Forms.Entry.TextProperty, nameof(ViewModel.TokenEntryText));
+            _tokenEntry.SetBinding(Xamarin.Forms.Entry.ReturnCommandProperty, nameof(ViewModel.SaveCommand));
 
             var saveButton = new BlueButton { Text = "Save" };
             saveButton.SetBinding(Button.CommandProperty, nameof(ViewModel.SaveCommand));
@@ -62,14 +72,16 @@ namespace GitHubXamarin
             ViewModel.GetTokenCommand?.Execute(null);
         }
 
-        void ClosePage() => Device.BeginInvokeOnMainThread(async () => await Navigation.PopModalAsync());
-        void HandleCancelButtonClicked(object sender, EventArgs e) => ClosePage();
+        Task ClosePage() => Device.InvokeOnMainThreadAsync(() => Navigation.PopModalAsync());
+
+        async void HandleCancelButtonClicked(object sender, EventArgs e) => await ClosePage();
+
         void HandleSaveCompleted(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
                 await DisplayAlert("Save Completed", "", "OK");
-                ClosePage();
+                await ClosePage();
             });
         }
 

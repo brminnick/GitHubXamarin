@@ -6,10 +6,14 @@ namespace GitHubXamarin
 {
     public class Repository
     {
-        public Repository() { }
+        public Repository()
+        {
+
+        }
 
         [JsonConstructor]
-        public Repository(StarGazers starGazers) => StarGazers = starGazers;
+        public Repository(StarGazers stargazers, IssuesConnection issues) =>
+            (StarCount, IssuesCount) = (stargazers?.TotalCount ?? 0, issues.IssuesCount);
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -24,25 +28,12 @@ namespace GitHubXamarin
         public RepositoryOwner Owner { get; set; }
 
         [JsonProperty("issues")]
-        public IssuesConnection Issues { get; set; }
+        public int IssuesCount { get; set; }
 
         [JsonProperty("url")]
         public Uri Uri { get; set; }
 
-        public int StarCount
-        {
-            get => StarGazers?.TotalCount ?? 0;
-            set
-            {
-                if (StarGazers is null)
-                    StarGazers = new StarGazers { TotalCount = value };
-                else
-                    StarGazers.TotalCount = value;
-            }
-        }
-
-        [JsonProperty("stargazers")]
-        StarGazers StarGazers { get; set; }
+        public int StarCount { get; set; }
 
         public override string ToString()
         {
@@ -53,7 +44,7 @@ namespace GitHubXamarin
             stringBuilder.AppendLine($"{nameof(StarCount)}: {StarCount}");
             stringBuilder.AppendLine($"{nameof(Description)}: {Description}");
             stringBuilder.AppendLine($"{nameof(ForkCount)}: {ForkCount}");
-            stringBuilder.AppendLine($"{nameof(Issues)}Count: {Issues?.IssueList.Count}");
+            stringBuilder.AppendLine($"{nameof(IssuesCount)}: {IssuesCount}");
 
             return stringBuilder.ToString();
         }

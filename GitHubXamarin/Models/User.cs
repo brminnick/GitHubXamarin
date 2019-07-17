@@ -6,10 +6,13 @@ namespace GitHubXamarin
 {
     public class User
     {
-        public User() { }
+        public User()
+        {
+
+        }
 
         [JsonConstructor]
-        public User(GitHubFollowers followers) => Followers = followers;
+        public User( GitHubFollowers followers) => FollowerCount = followers.Count;
 
         [JsonProperty("repositories")]
         public RepositoryConnection RepositoryConnection { get; set; }
@@ -23,20 +26,7 @@ namespace GitHubXamarin
         [JsonProperty("createdAt")]
         public DateTimeOffset AccountCreationDate { get; set; }
 
-        public int FollowerCount
-        {
-            get => Followers?.Count ?? -1;
-            set
-            {
-                if (Followers is null)
-                    Followers = new GitHubFollowers { Count = value };
-                else
-                    Followers.Count = value;
-            }
-        }
-
-        [JsonProperty("followers")]
-        GitHubFollowers Followers { get; set; }
+        public int FollowerCount { get; set; }
 
         public override string ToString()
         {

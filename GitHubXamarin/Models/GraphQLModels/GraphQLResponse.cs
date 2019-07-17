@@ -4,16 +4,12 @@ namespace GitHubXamarin
 {
     class GraphQLResponse<T>
     {
-        public GraphQLResponse(T data, GraphQLError[] errors)
-        {
-            Data = data;
-            Errors = errors;
-        }
+        public GraphQLResponse(T data, GraphQLError[] errors) => (Data, Errors) = (data, errors);
 
         [JsonProperty("data")]
-        public T Data { get; set; }
+        public T Data { get; }
 
         [JsonProperty("errors")]
-        public GraphQLError[] Errors { get; set; }
+        public GraphQLError[] Errors { get; }
     }
 }

@@ -5,13 +5,13 @@ namespace GitHubXamarin
 {
     public class RepositoryConnection
     {
-        public RepositoryConnection(List<Repository> repositoryList, PageInfo pageInfo) =>
-            (RepositoryList, PageInfo) = (repositoryList, pageInfo);
+        public RepositoryConnection(IEnumerable<Repository> nodes, PageInfo pageInfo) =>
+            (RepositoryList, PageInfo) = (nodes, pageInfo);
 
         [JsonProperty("nodes")]
-        public IEnumerable<Repository> RepositoryList { get; set; }
+        public IEnumerable<Repository> RepositoryList { get; }
 
         [JsonProperty("pageInfo")]
-        public PageInfo PageInfo { get; set; }
+        public PageInfo PageInfo { get; }
     }
 }

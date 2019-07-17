@@ -1,18 +1,21 @@
-﻿<Properties StartupConfiguration="{8C712C8C-234F-4B8E-8D5B-325AEBAF77B2}|Default">
-  <MonoDevelop.Ide.ItemProperties.GitHubXamarin.Android PreferredExecutionTarget="Android.pixel_api28" />
+﻿<Properties StartupConfiguration="{E3B1DD1C-E709-402D-834C-1235A58C1291}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
+  <MonoDevelop.Ide.ItemProperties.GitHubXamarin.Android PreferredExecutionTarget="Android.api_28_pixel" />
   <MonoDevelop.Ide.Workbench ActiveDocument="GitHubXamarin.Android/MainActivity.cs">
     <Files>
-      <File FileName="GitHubXamarin/Views/RepositoryViewCell.cs" Line="1" Column="1" />
-      <File FileName="GitHubXamarin.iOS/AppDelegate.cs" Line="13" Column="88" />
+      <File FileName="GitHubXamarin/ViewModels/RepositoryViewModel.cs" Line="64" Column="1" />
+      <File FileName="GitHubXamarin/Models/Repository.cs" />
+      <File FileName="GitHubXamarin/ViewModels/SettingsViewModel.cs" Line="62" Column="85" />
+      <File FileName="GitHubXamarin/Pages/RepositoryPage.cs" Line="67" Column="25" />
+      <File FileName="GitHubXamarin/Pages/SettingsPage.cs" Line="25" Column="46" />
+      <File FileName="GitHubXamarin/Constants/GitHubConstants.cs" Line="1" Column="1" />
+      <File FileName="GitHubXamarin/Views/RepositoryViewCell.cs" Line="123" Column="59" />
+      <File FileName="GitHubXamarin.iOS/AppDelegate.cs" Line="1" Column="1" />
       <File FileName="GitHubXamarin.Android/MainActivity.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="GitHubXamarin" expanded="True">
-            <Node name="GitHubXamarin" expanded="True">
-              <Node name="Views" expanded="True" />
-            </Node>
             <Node name="GitHubXamarin.Android" expanded="True">
               <Node name="MainActivity.cs" selected="True" />
             </Node>
@@ -28,6 +31,7 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/bramin/Projects/GitHub/GitHubXamarin/GitHubXamarin/App.cs" relfile="GitHubXamarin/App.cs" line="14" column="1" />
+      <Breakpoint file="/Users/bramin/Projects/GitHub/GitHubXamarin/GitHubXamarin/ViewModels/RepositoryViewModel.cs" relfile="GitHubXamarin/ViewModels/RepositoryViewModel.cs" line="64" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

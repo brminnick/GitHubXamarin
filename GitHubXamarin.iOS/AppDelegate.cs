@@ -10,6 +10,8 @@ namespace GitHubXamarin.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init();
+
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             FFImageLoading.Forms.Platform.CachedImageRenderer.InitImageSourceHandler();
 
             LoadApplication(new App());
