@@ -13,6 +13,10 @@ namespace GitHubXamarin.iOS
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             FFImageLoading.Forms.Platform.CachedImageRenderer.InitImageSourceHandler();
+            FFImageLoading.ImageService.Instance.Initialize(new FFImageLoading.Config.Configuration
+            {
+                HttpHeadersTimeout = 60
+            });
 
             LoadApplication(new App());
 
