@@ -6,7 +6,6 @@ namespace GitHubXamarin
 {
 	public static class DebugServices
 	{
-		#region Methods
 		public static void Report(Exception exception,
 								  [CallerMemberName] string callerMemberName = "",
 								  [CallerLineNumber] int lineNumber = 0,
@@ -26,6 +25,5 @@ namespace GitHubXamarin
 			Debug.WriteLine($"Caller Name: {callerMemberName}");
 			Debug.WriteLine($"File Name: {fileName}");
 		}
-		#endregion
 	}
 }

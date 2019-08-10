@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Linq;
-
+using AsyncAwaitBestPractices;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace GitHubXamarin
 {
-    class RepositoryPage : BaseContentPage<RepositoryViewModel>
+    public class RepositoryPage : BaseContentPage<RepositoryViewModel>, ISearchPage
     {
+        readonly WeakEventManager<string> _searchBarTextChangedEventManager = new WeakEventManager<string>();
         readonly ListView _listView;
 
         public RepositoryPage()
         {
+            SearchBarTextChanged += HandleSearchBarTextChanged;
             ViewModel.PullToRefreshFailed += HandlePullToRefreshFailed;
 
             _listView = new ListView(ListViewCachingStrategy.RecycleElement)
@@ -26,10 +28,19 @@ namespace GitHubXamarin
             };
             _listView.ItemTapped += HandleListViewItemTapped;
             _listView.SetBinding(ListView.IsRefreshingProperty, nameof(ViewModel.IsRefreshing));
-            _listView.SetBinding(ListView.ItemsSourceProperty, nameof(ViewModel.RepositoryCollection));
+            _listView.SetBinding(ListView.ItemsSourceProperty, nameof(ViewModel.VisibleRepositoryCollection));
             _listView.SetBinding(ListView.RefreshCommandProperty, nameof(ViewModel.PullToRefreshCommand));
 
-            var settingsToolbarItem = new ToolbarItem { IconImageSource = "Settings" };
+            var settingsToolbarItem = new ToolbarItem
+            {
+                Order = Device.RuntimePlatform is Device.Android ? ToolbarItemOrder.Secondary : ToolbarItemOrder.Default
+            };
+
+            if (Device.RuntimePlatform is Device.iOS)
+                settingsToolbarItem.IconImageSource = "Settings";
+            else
+                settingsToolbarItem.Text = "Settings";
+
             settingsToolbarItem.Clicked += HandleSettingsToolbarItem;
             ToolbarItems.Add(settingsToolbarItem);
 
@@ -38,6 +49,14 @@ namespace GitHubXamarin
 
             Content = _listView;
         }
+
+        public event EventHandler<string> SearchBarTextChanged
+        {
+            add => _searchBarTextChangedEventManager.AddEventHandler(value);
+            remove => _searchBarTextChangedEventManager.RemoveEventHandler(value);
+        }
+
+        public void OnSearchBarTextChanged(in string text) => _searchBarTextChangedEventManager.HandleEvent(this, text, nameof(SearchBarTextChanged));
 
         protected override void OnAppearing()
         {
@@ -77,5 +96,7 @@ namespace GitHubXamarin
                 }
             });
         }
+
+        void HandleSearchBarTextChanged(object sender, string searchBarText) => ViewModel.FilterRepositoriesCommand?.Execute(searchBarText);
     }
 }

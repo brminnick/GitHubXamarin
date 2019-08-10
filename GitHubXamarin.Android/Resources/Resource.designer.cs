@@ -5837,6 +5837,9 @@ namespace GitHubXamarin.Droid
 			// aapt resource value: 0x7f0b0039
 			public const int ALT = 2131427385;
 			
+			// aapt resource value: 0x7f0b00d0
+			public const int ActionSearch = 2131427536;
+			
 			// aapt resource value: 0x7f0b003a
 			public const int CTRL = 2131427386;
 			
@@ -6773,6 +6776,22 @@ namespace GitHubXamarin.Droid
 			}
 			
 			private Layout()
+			{
+			}
+		}
+		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f100000
+			public const int MainMenu = 2131755008;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
 			{
 			}
 		}

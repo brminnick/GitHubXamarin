@@ -10,15 +10,10 @@ namespace GitHubXamarin
 {
     static class GitHubGraphQLService
     {
-        #region Constant Fields
         readonly static Lazy<IGitHubAPI> _githubApiClientHolder = new Lazy<IGitHubAPI>(() => RestService.For<IGitHubAPI>(GitHubConstants.APIUrl));
-        #endregion
 
-        #region Properties
         static IGitHubAPI GitHubApiClient => _githubApiClientHolder.Value;
-        #endregion
 
-        #region Methods
         public static async Task<User> GetUser(string username)
         {
             var token = await GitHubSettings.GetToken().ConfigureAwait(false);
@@ -73,6 +68,5 @@ namespace GitHubXamarin
 
         static string GetEndCursorString(string endCursor) => string.IsNullOrWhiteSpace(endCursor) ? string.Empty : "after: \"" + endCursor + "\"";
         static string GetBearerTokenHeader(string githubApiToken) => $"bearer {githubApiToken}";
-        #endregion
     }
 }

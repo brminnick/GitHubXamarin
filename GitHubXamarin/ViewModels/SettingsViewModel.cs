@@ -8,18 +8,13 @@ namespace GitHubXamarin
 {
     public class SettingsViewModel : BaseViewModel
     {
-        #region Constant Fields
         readonly WeakEventManager _saveCompletedEventManager = new WeakEventManager();
         readonly WeakEventManager<string> _saveFailedEventManager = new WeakEventManager<string>();
-        #endregion
 
-        #region Fields
         ICommand _getTokenCommand, _saveCommand;
         string _tokenEntryText;
         string _usernameEntryText = GitHubSettings.User;
-        #endregion
 
-        #region Events
         public event EventHandler SaveCompleted
         {
             add => _saveCompletedEventManager.AddEventHandler(value);
@@ -31,14 +26,12 @@ namespace GitHubXamarin
             add => _saveFailedEventManager.AddEventHandler(value);
             remove => _saveFailedEventManager.RemoveEventHandler(value);
         }
-        #endregion
 
-        #region Properties
         public ICommand GetTokenCommand => _getTokenCommand ??
-            (_getTokenCommand = new AsyncCommand(async () => TokenEntryText = await GitHubSettings.GetToken().ConfigureAwait(false), continueOnCapturedContext: false));
+            (_getTokenCommand = new AsyncCommand(async () => TokenEntryText = await GitHubSettings.GetToken().ConfigureAwait(false)));
 
         public ICommand SaveCommand => _saveCommand ??
-            (_saveCommand = new AsyncCommand(() => ExecuteSaveButtonTapped(UsernameEntryText, TokenEntryText), continueOnCapturedContext: false));
+            (_saveCommand = new AsyncCommand(() => ExecuteSaveButtonTapped(UsernameEntryText, TokenEntryText)));
 
         public string UsernameEntryText
         {
@@ -51,9 +44,7 @@ namespace GitHubXamarin
             get => _tokenEntryText;
             set => SetProperty(ref _tokenEntryText, value);
         }
-        #endregion
 
-        #region Methods
         async Task ExecuteSaveButtonTapped(string usernameEntryText, string tokenEntryText)
         {
             try
@@ -71,6 +62,5 @@ namespace GitHubXamarin
 
         void OnSaveCompleted() => _saveCompletedEventManager.HandleEvent(this, EventArgs.Empty, nameof(SaveCompleted));
         void OnSaveFailed(string message) => _saveFailedEventManager.HandleEvent(this, message, nameof(SaveFailed));
-        #endregion
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,52 +9,60 @@ using AsyncAwaitBestPractices;
 using AsyncAwaitBestPractices.MVVM;
 
 using Refit;
+using Xamarin.Forms;
 
 namespace GitHubXamarin
 {
-    class RepositoryViewModel : BaseViewModel
+    public class RepositoryViewModel : BaseViewModel
     {
-        #region Constant Fields
         readonly WeakEventManager<PullToRefreshFailedEventArgs> _pullToRefreshFailedEventManager = new WeakEventManager<PullToRefreshFailedEventArgs>();
-        #endregion
 
-        #region Fields
         bool _isRefreshing;
-        ICommand _pullToRefreshCommand;
-        #endregion
+        ICommand _pullToRefreshCommand, _filterRepositoriesCommand;
+        string _searchBarText = "";
+        IReadOnlyList<Repository> _repositoryList;
 
-        #region Events
         public event EventHandler<PullToRefreshFailedEventArgs> PullToRefreshFailed
         {
             add => _pullToRefreshFailedEventManager.AddEventHandler(value);
             remove => _pullToRefreshFailedEventManager.RemoveEventHandler(value);
         }
-        #endregion
 
-        #region Properties
         public ICommand PullToRefreshCommand => _pullToRefreshCommand ??
-            (_pullToRefreshCommand = new AsyncCommand(() => ExecutePullToRefreshCommand(GitHubSettings.User), continueOnCapturedContext: false));
+            (_pullToRefreshCommand = new AsyncCommand(() => ExecutePullToRefreshCommand(GitHubSettings.User)));
 
-        public ObservableCollection<Repository> RepositoryCollection { get; } = new ObservableCollection<Repository>();
+        public ICommand FilterRepositoriesCommand => _filterRepositoriesCommand ??
+            (_filterRepositoriesCommand = new Command<string>(text => SetSearchBarText(text)));
+
+        public ObservableRangeCollection<Repository> VisibleRepositoryCollection { get; } = new ObservableRangeCollection<Repository>();
 
         public bool IsRefreshing
         {
             get => _isRefreshing;
             set => SetProperty(ref _isRefreshing, value);
         }
-        #endregion
 
-        #region Methods
+        void SetRepositoriesCollection(in IEnumerable<Repository> repositories, string repositoryOwner, string searchBarText)
+        {
+            _repositoryList = repositories.Where(x => x.Owner.Login.Equals(repositoryOwner, StringComparison.InvariantCultureIgnoreCase)).OrderByDescending(x => x.StarCount).ToList();
+
+            IEnumerable<Repository> filteredRepositoryList;
+            if (string.IsNullOrWhiteSpace(searchBarText))
+                filteredRepositoryList = _repositoryList;
+            else
+                filteredRepositoryList = _repositoryList.Where(x => x.Name.Contains(searchBarText));
+
+            VisibleRepositoryCollection.Clear();
+            VisibleRepositoryCollection.AddRange(filteredRepositoryList);
+        }
+
         async Task ExecutePullToRefreshCommand(string repositoryOwner)
         {
             try
             {
                 var repositoryList = await GitHubGraphQLService.GetRepositories(repositoryOwner).ConfigureAwait(false);
 
-                foreach (var repository in repositoryList.OrderByDescending(x => x.StarCount))
-                {
-                    RepositoryCollection.Add(repository);
-                }
+                SetRepositoriesCollection(repositoryList, repositoryOwner, _searchBarText);
             }
             catch (ApiException e) when (e.StatusCode is System.Net.HttpStatusCode.Unauthorized)
             {
@@ -69,8 +78,18 @@ namespace GitHubXamarin
             }
         }
 
+        void SetSearchBarText(in string text)
+        {
+            if (EqualityComparer<string>.Default.Equals(_searchBarText, text))
+                return;
+
+            _searchBarText = text;
+
+            if (_repositoryList?.Any() is true)
+                SetRepositoriesCollection(_repositoryList, GitHubSettings.User, text);
+        }
+
         void OnPullToRefreshFailed(string title, string message) =>
             _pullToRefreshFailedEventManager.HandleEvent(this, new PullToRefreshFailedEventArgs(message, title), nameof(PullToRefreshFailed));
-        #endregion
     }
 }
