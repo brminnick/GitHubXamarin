@@ -1,5 +1,7 @@
 # GitHubXamarin
 
+This repo has been moved to https://github.com/brminnick/gittrends
+
 An iOS and Android app built in Xamarin.Forms to retrieve Github Repositories using GitHub's GraphQL API
 
 | iOS | Android |
